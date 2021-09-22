@@ -1,0 +1,14 @@
+.card-container {
+  box-sizing: border-box;
+  width: calc(100% - 30px);
+  margin: 25px auto 10px auto;
+}
+
+.table-container {
+  box-sizing: border-box;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+.filler{
+    flex:1 1 auto;
+}

@@ -1,0 +1,39 @@
+<form class="form-container" [formGroup]="memberForm" (submit)="update()">
+  <div class="f-w">
+    <h3>Update member</h3>
+  </div>
+  <mat-form-field class="f-w">
+    <mat-label>Member Name</mat-label>
+    <input matInput formControlName="name" required>
+    <mat-error *ngIf="f.name.touched && f.name.errors?.required">Member Name required!!</mat-error>
+    <mat-error *ngIf="f.name.errors?.maxlength">Member Name can up to 40 chars!!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Contact</mat-label>
+    <input matInput formControlName="phone" required>
+    <mat-error *ngIf="f.phone.touched && f.phone.errors?.required">Contact required!!</mat-error>
+    <mat-error *ngIf="f.phone.errors?.maxlength">Member Name can up to 12 chars!!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Amount</mat-label>
+    <input type="number" matInput formControlName="mAmount" required>
+    <mat-error *ngIf="f.mAmount.touched && f.mAmount.errors?.required">Amount required!!</mat-error>
+    <mat-error *ngIf="f.mAmount.errors?.maxlength">Amount can up to 12 chars!!</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="f-w">
+    <mat-label>Picture</mat-label>
+    <ngx-mat-file-input formControlName="mPicture" [accept]="'image/*'" (change)="onChange($event)"></ngx-mat-file-input>
+    <mat-icon matSuffix>insert_photo</mat-icon>
+    <mat-error *ngIf="f.mPicture.touched && f.mPicture.errors">Picture required</mat-error>
+  </mat-form-field>
+
+  <div class="f-w">
+    <button [disabled]="memberForm.invalid" mat-raised-button type="submit" color="accent"><mat-icon>save_alt</mat-icon> Save</button>
+  </div>
+  <div class="f-w">
+    <a mat-flat-button [routerLink]="['/member']">Back to list</a>
+  </div>
+</form>

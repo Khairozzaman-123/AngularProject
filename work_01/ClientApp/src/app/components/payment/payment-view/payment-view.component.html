@@ -1,0 +1,44 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      Payment
+    </mat-card-title>
+    <mat-card-subtitle class="card-subtitle">
+      Payment Information.
+    </mat-card-subtitle>
+    <span class="filler"></span>
+    <a [routerLink]="['/add-pament']" mat-mini-fab color="primary"><mat-icon>add</mat-icon></a>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="Month">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Month Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.pMonth| date: 'yyyy-MMM-dd'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Amount">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Amount</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.pAmount}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="memberId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Member</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getMemberName(element.memberId) }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>...</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/edit-payment', element.paymentId]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnList;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+

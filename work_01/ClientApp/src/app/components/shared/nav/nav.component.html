@@ -1,0 +1,16 @@
+<div class="main-container">
+  <mat-toolbar color="primary" class="main-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>GymCenter</h1>
+      <span class="menu-spacer"></span>
+      <a mat-button [routerLink]="['/Home']">Home</a>
+      <a mat-button [routerLink]="['/member']">Members</a>
+      <a mat-button [routerLink]="['/payment']">Payment</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
+
